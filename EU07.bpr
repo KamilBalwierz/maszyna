@@ -4,7 +4,8 @@
   <MACROS>
     <VERSION value="BCB.05.03"/>
     <PROJECT value="EU07.exe"/>
-    <OBJFILES value="QueryParserComp.obj McZapkie\mtable.obj McZapkie\_mover.obj
+    <OBJFILES value="py\Interpreter.obj py\CabRenderersSet.obj py\CabRenderer.obj
+      QueryParserComp.obj McZapkie\mtable.obj McZapkie\_mover.obj
       McZapkie\hamulce.obj EU07.obj dumb3d.obj Camera.obj Texture.obj World.obj
       Model3d.obj MdlMngr.obj Train.obj wavread.obj Timer.obj Event.obj
       MemCell.obj Logs.obj Spring.obj Button.obj Globals.obj Gauge.obj
@@ -23,7 +24,7 @@
     <LIBRARIES value="dclocx50.bpi bcbsmp50.bpi VCLX50.lib bcbsmp50.lib Vcl50.lib"/>
     <SPARELIBS value="Vcl50.lib bcbsmp50.lib VCLX50.lib bcbsmp50.bpi dclocx50.bpi"/>
     <PACKAGES value="Vcl50.bpi Vclx50.bpi"/>
-    <PATHCPP value=".;opengl;Console"/>
+    <PATHCPP value=".;opengl;Console;py"/>
     <PATHPAS value=".;McZapkie"/>
     <PATHRC value=".;"/>
     <PATHASM value=".;"/>

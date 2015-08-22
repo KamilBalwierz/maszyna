@@ -22,6 +22,7 @@ http://mozilla.org/MPL/2.0/.
 #include "Timer.h"
 #include "Driver.h"
 #include "Console.h"
+
 //---------------------------------------------------------------------------
 
 #pragma package(smart_init)
@@ -4902,6 +4903,7 @@ bool TTrain::LoadMMediaFile(AnsiString asFileName)
 
 bool TTrain::InitializeCab(int NewCabNo, AnsiString asFileName)
 {
+    inCabinRenderers.reInit(this, NewCabNo);
     bool parse = false;
     double dSDist;
     TFileStream *fs;
@@ -4922,6 +4924,7 @@ bool TTrain::InitializeCab(int NewCabNo, AnsiString asFileName)
     int cabindex = 0;
     TGauge *gg; // roboczy wsaŸnik na obiekt animuj¹cy ga³kê
     DynamicObject->mdKabina = NULL; // likwidacja wskaŸnika na dotychczasow¹ kabinê
+
     switch (NewCabNo)
     { // ustalenie numeru kabiny do wczytania
     case -1:
@@ -5517,6 +5520,7 @@ bool TTrain::InitializeCab(int NewCabNo, AnsiString asFileName)
         return false;
     }
     // ABu 050205: tego wczesniej nie bylo:
+    inCabinRenderers.add(Parser); // TODO: przeniesc do parsowania pliku ini
     delete Parser;
     if (DynamicObject->mdKabina)
     {

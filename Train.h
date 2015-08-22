@@ -24,6 +24,8 @@ http://mozilla.org/MPL/2.0/.
 #include "RealSound.h"
 #include "FadeSound.h"
 
+#include "py/CabRenderersSet.hpp"
+
 // typedef enum {st_Off, st_Starting, st_On, st_ShuttingDown} T4State;
 
 const int maxcab = 2;
@@ -100,6 +102,7 @@ class TTrain
 
   private: //瞠by go nic z zewn靖rz nie przestawia這
     TDynamicObject *DynamicObject; // przestawia zmiana pojazdu [F5]
+    TPyCabRenderersSet inCabinRenderers;
   private: //瞠by go nic z zewn靖rz nie przestawia這
     TMoverParameters *mvControlled; // cz這n, w kt鏎ym sterujemy silnikiem
     TMoverParameters *mvOccupied; // cz這n, w kt鏎ym sterujemy hamulcem
