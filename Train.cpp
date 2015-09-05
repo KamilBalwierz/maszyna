@@ -3213,8 +3213,8 @@ bool TTrain::Update()
                                       false);
 
         { // yB - wskazniki drugiego czlonu
-            TDynamicObject *
-                tmp; //=mvControlled->mvSecond; //Ra 2014-07: trzeba to jeszcze wyj¹æ z kabiny...
+            TDynamicObject
+                *tmp; //=mvControlled->mvSecond; //Ra 2014-07: trzeba to jeszcze wyj¹æ z kabiny...
             // Ra 2014-07: no nie ma potrzeby szukaæ tego w ka¿dej klatce
             tmp = NULL;
             if ((TestFlag(mvControlled->Couplers[1].CouplingFlag, ctrain_controll)) &&
@@ -5511,6 +5511,8 @@ bool TTrain::InitializeCab(int NewCabNo, AnsiString asFileName)
                 btLampkaBackward.Load(Parser, DynamicObject->mdKabina);
             else if (str == AnsiString("i-cablight:")) // hunter-171012
                 btCabLight.Load(Parser, DynamicObject->mdKabina);
+            else if (str == AnsiString("pyscreen:"))
+                inCabinRenderers.add(Parser);
             // btLampkaUnknown.Init("unknown",mdKabina,false);
         }
     }
@@ -5520,7 +5522,6 @@ bool TTrain::InitializeCab(int NewCabNo, AnsiString asFileName)
         return false;
     }
     // ABu 050205: tego wczesniej nie bylo:
-    inCabinRenderers.add(Parser); // TODO: przeniesc do parsowania pliku ini
     delete Parser;
     if (DynamicObject->mdKabina)
     {

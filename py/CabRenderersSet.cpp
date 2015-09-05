@@ -1,5 +1,6 @@
 #include "py/CabRenderersSet.hpp"
 #include "py/CabRenderer.hpp"
+#include "py/Interpreter.hpp"
 #include "Train.h"
 
 TPyCabRenderersSet::TPyCabRenderersSet()
@@ -30,7 +31,10 @@ void TPyCabRenderersSet::reInit(TTrain *train, int cabNo)
 
 void TPyCabRenderersSet::add(TQueryParserComp *parser)
 {
+    std::string modelName = TPyInterpreter::getString(parser->GetNextSymbol());
+    std::string moduleName = TPyInterpreter::getString(parser->GetNextSymbol());
+    std::string className = TPyInterpreter::getString(parser->GetNextSymbol());
     // TODO: use parser to find and initialize proper renderer
-    TPyCabRenderer *renderer = new TPyCabRenderer(_train, _cabNo, "test");
+    TPyCabRenderer *renderer = new TPyCabRenderer(_train, _cabNo, moduleName, className);
     _renderes.push_back(renderer);
 }
